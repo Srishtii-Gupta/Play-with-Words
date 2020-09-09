@@ -1,0 +1,1760 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+
+
+  <title>Scrambled Word Game</title>
+    <head>
+    <meta charset="utf-8">
+    <title> Scrambled Words</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Quicksand:400,500&display=swap" rel="stylesheet">
+  </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+  
+<style>
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 27, ../sass/partials/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* line 31, ../sass/partials/_normalize.scss */
+body {
+  line-height: 1;
+}
+
+/* line 34, ../sass/partials/_normalize.scss */
+ol,
+ul {
+  list-style: none;
+}
+
+/* line 37, ../sass/partials/_normalize.scss */
+blockquote,
+q {
+  quotes: none;
+}
+
+/* line 40, ../sass/partials/_normalize.scss */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* line 45, ../sass/partials/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 5, ../sass/styles.scss */
+html,
+body {
+  font-size: 16px;
+  width: 100%;
+  font-family: "Quicksand", sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* line 13, ../sass/styles.scss */
+nav {
+  border-bottom: #e18a07 2px solid;
+  width: 100%;
+  padding: 0.625em;
+  display: block;
+  height: 2em;
+}
+
+/* line 20, ../sass/styles.scss */
+h1 {
+  font-size: 2em;
+  display: inline-block;
+  float: left;
+  padding-left: 1em;
+}
+
+/* line 26, ../sass/styles.scss */
+#contact {
+  font-size: 2em;
+  display: inline-block;
+  float: right;
+  padding-right: 1em;
+}
+
+/* line 32, ../sass/styles.scss */
+#contact a {
+  color: #000;
+}
+
+/* line 35, ../sass/styles.scss */
+#contact i:hover {
+  color: #e18a07;
+  cursor: pointer;
+}
+
+/* line 40, ../sass/styles.scss */
+#rules {
+  position: absolute;
+  z-index: 999;
+  width: 31.25em;
+  height: 31.25em;
+  text-align: center;
+  left: 50%;
+  margin-left: -200px;
+  top: 50%;
+  margin-top: -200px;
+}
+
+/* line 51, ../sass/styles.scss */
+#rules p {
+  margin-bottom: 1.25em;
+}
+
+/* line 55, ../sass/styles.scss */
+#game-container {
+  text-align: center;
+  margin: 2em auto;
+  width: 100vh;
+  height: 80vh;
+}
+
+/* line 62, ../sass/styles.scss */
+#game-container p {
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: 3em;
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+/* line 69, ../sass/styles.scss */
+#game-container p span {
+  font-weight: 300;
+}
+
+/* line 72, ../sass/styles.scss */
+#game-container p#info {
+  display: block;
+  text-align: center;
+  font-size: 2em !important;
+  height: 2em;
+  margin-bottom: 1em;
+}
+
+/* line 80, ../sass/styles.scss */
+#scrambled-word {
+  font-size: 3em !important;
+  font-family: "Anton", sans-serif;
+  text-transform: uppercase;
+  display: block;
+  margin-left: 48px;
+  margin-bottom: 1em !important;
+}
+
+/* line 89, ../sass/styles.scss */
+#scrambled-word p {
+  display: block;
+  width: 100%;
+}
+
+/* line 94, ../sass/styles.scss */
+#user-guess {
+  display: block;
+  width: 20em;
+  height: 3em;
+  padding-left: 1em;
+  margin: 0 auto 1.25em;
+  border: 1px solid #000;
+  outline-color: #e18a07;
+  font-size: 1.1em;
+}
+
+/* line 104, ../sass/styles.scss */
+small {
+  font-size: 0.8em;
+}
+
+/* line 107, ../sass/styles.scss */
+.lead {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+/* line 111, ../sass/styles.scss */
+.correct,
+.incorrect {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+/* line 116, ../sass/styles.scss */
+.correct {
+  color: green;
+  display: block;
+}
+
+/* line 121, ../sass/styles.scss */
+.incorrect {
+  color: red;
+  display: block;
+}
+
+/* line 126, ../sass/styles.scss */
+.hidden {
+  visibility: hidden;
+}
+
+/* line 129, ../sass/styles.scss */
+button {
+  cursor: pointer;
+  width: 12em;
+  height: 3em;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+/* line 138, ../sass/styles.scss */
+#submit,
+#play-btn {
+  background: #fff;
+  border: 2px solid #e18a07;
+}
+
+/* line 143, ../sass/styles.scss */
+#submit:hover,
+#play-btn:hover {
+  background: #e18a07;
+  color: #fff;
+  transition: 0.2s background;
+}
+
+/* line 150, ../sass/styles.scss */
+#reset-btn {
+  background: #fff;
+  border: none;
+  box-shadow: 1px 1px 1px #999;
+}
+
+/* line 155, ../sass/styles.scss */
+#reset-btn:hover {
+  box-shadow: 1px 1px 1px #000;
+  transition: 0.2s box-shadow;
+}
+
+/* line 161, ../sass/styles.scss */
+button:active {
+  position: relative;
+  top: 1px;
+}
+
+/* line 166, ../sass/styles.scss */
+#copyright {
+  text-align: center;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <html lang="en" dir="ltr">
+<body>
+  <nav>
+    <h1>Scrambled Words</h1>
+    <div id="contact">
+      <a target="_blank" href="//https://github.com/Srishtii-Gupta"><i class="fab fa-github"></i></a>
+    </div>
+    <div id="rules">
+      <p class="lead">Unscamble the words.</p>
+      <p>Type in your guess <small>(Enter works)</small>.</p>
+      <p>Get three correct and level up.</p>
+      <p>Get a word wrong three times and restart.</p>
+      <p>Finish level 8 and you win.</p>
+      <p>Good luck!</p>
+      <button id="play-btn">Let's Play</button>
+    </div>
+  </nav>
+
+  <div id="game-container" class="hidden">
+    <p>Level: <span id="level">1</span></p>
+    <p>Score: <span id="score">0</span></p>
+    <p>Attempts: <span id="attempts">0</span></p>
+    <p id="info"></p>
+
+    <div id="guess-container">
+      <p id="scrambled-word"></p>
+
+      <input id="user-guess" type="text" placeholder="Enter your guess">
+      <button id="submit">Submit</button>
+      <button id="reset-btn">Reset</button>
+    </div>
+
+  </div>
+
+  <div id="copyright">
+    <p>Coded by:<a target="_blank" href="https://github.com/Srishtii-Gupta"> Srishti</a></p>
+  </div>
+</body>
+
+</html>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  
+  
+      <script id="rendered-js" >
+const userGuess = document.getElementById("user-guess");
+const submitBtn = document.getElementById("submit");
+const usersWord = document.getElementById("scrambled-word");
+const info = document.getElementById("info");
+const levelOutput = document.getElementById("level");
+const scoreOutput = document.getElementById("score");
+const attemptsOutput = document.getElementById("attempts");
+const gameContainer = document.getElementById("game-container");
+const guessContainer = document.getElementById("guess-container");
+const rules = document.getElementById("rules");
+const playBtn = document.getElementById("play-btn");
+const resetBtn = document.getElementById("reset-btn");
+
+let level = 1;
+let score = 0;
+let word;
+let attempts = 0;
+let correct = 0;
+
+const lvlOneWords = [
+"aim",
+"ace",
+"bed",
+"bee",
+"buy",
+"can",
+"cow",
+"cod",
+"cur",
+"did",
+"duo",
+"die",
+"dry",
+"dug",
+"elf",
+"egg",
+"elk",
+"fat",
+"fix",
+"fin",
+"few",
+"gym",
+"guy",
+"goo",
+"hen",
+"hag",
+"hic",
+"hut",
+"ill",
+"ice",
+"imp",
+"ink",
+"ivy",
+"jet",
+"job",
+"jaw",
+"jab",
+"keg",
+"kid",
+"lip",
+"leg",
+"lad",
+"let",
+"led",
+"law",
+"lid",
+"mut",
+"mat",
+"mud",
+"mid",
+"nit",
+"nog",
+"now",
+"oil",
+"owl",
+"oar",
+"off",
+"oat",
+"one",
+"pry",
+"pal",
+"peg",
+"pea",
+"pen",
+"pus",
+"rad",
+"rem",
+"rig",
+"rob",
+"saw",
+"sob",
+"sec",
+"shy",
+"sex",
+"sly",
+"tan",
+"the",
+"tic",
+"try",
+"cop",
+"uke",
+"ugh",
+"ups",
+"vat",
+"van",
+"vet",
+"woo",
+"wow",
+"wry",
+"wok",
+"yah",
+"yak",
+"yay",
+"you",
+"yep",
+"zit",
+"zap",
+"zig",
+"zag",
+"zip"];
+
+
+const lvlTwoWords = [
+"able",
+"aced",
+"acid",
+"ally",
+"also",
+"arcs",
+"area",
+"arch",
+"aunt",
+"axis",
+"baby",
+"back",
+"ball",
+"babe",
+"bass",
+"bell",
+"bets",
+"bind",
+"bios",
+"book",
+"cabs",
+"case",
+"chef",
+"curl",
+"chat",
+"chap",
+"chin",
+"chum",
+"chop",
+"coal",
+"dabs",
+"dame",
+"damp",
+"dart",
+"dash",
+"dark",
+"deck",
+"deep",
+"diva",
+"dice",
+"easy",
+"ends",
+"epic",
+"etch",
+"evil",
+"expo",
+"exam",
+"face",
+"fact",
+"fail",
+"fair",
+"fall",
+"farm",
+"fave",
+"fart",
+"gain",
+"gays",
+"gets",
+"germ",
+"glad",
+"hams",
+"hats",
+"haze",
+"help",
+"head",
+"hers",
+"hike",
+"jabs",
+"junk",
+"jury",
+"kept",
+"keys",
+"kilt",
+"kiss",
+"lads",
+"lamp",
+"lean",
+"less",
+"mark",
+"mile",
+"mine",
+"name",
+"nuns",
+"obit",
+"obey",
+"pack",
+"pane",
+"palm",
+"pals",
+"raid",
+"reek",
+"rift",
+"repo",
+"sees",
+"seem",
+"self",
+"slip",
+"thin",
+"tied",
+"toes",
+"tofu",
+"tree",
+"ugly",
+"unto",
+"used",
+"vans",
+"visa",
+"wack",
+"wade",
+"wait",
+"wasp",
+"yams",
+"yarn",
+"yoyo",
+"zest",
+"zero",
+"zinc",
+"zips",
+"zone",
+"zonk"];
+
+
+const lvlThreeWords = [
+"abide",
+"about",
+"abort",
+"above",
+"adapt",
+"array",
+"aglow",
+"aisle",
+"angry",
+"ansty",
+"basic",
+"beers",
+"brisk",
+"bends",
+"berry",
+"below",
+"birdy",
+"blush",
+"bluff",
+"bolts",
+"cable",
+"champ",
+"chalk",
+"clams",
+"coded",
+"comet",
+"crack",
+"cycle",
+"daddy",
+"dance",
+"darts",
+"dated",
+"denim",
+"digit",
+"dingy",
+"dolly",
+"douse",
+"dryer",
+"duvet",
+"earth",
+"eased",
+"elope",
+"epoxy",
+"event",
+"exact",
+"equal",
+"fable",
+"fades",
+"false",
+"fever",
+"fiber",
+"fifty",
+"flaw",
+"flank",
+"froze",
+"fruit",
+"gamma",
+"gangs",
+"gawks",
+"gecko",
+"goofy",
+"goner",
+"guild",
+"hairy",
+"harem",
+"hedge",
+"hello",
+"helms",
+"honor",
+"image",
+"imply",
+"itchy",
+"issue",
+"ionic",
+"jacks",
+"japan",
+"jewel",
+"juice",
+"junky",
+"keeps",
+"kooky",
+"laced",
+"laces",
+"lamps",
+"laser",
+"leaky",
+"lynch",
+"mages",
+"mafia",
+"miles",
+"meats",
+"might",
+"mixer",
+"moths",
+"movie",
+"mushy",
+"named",
+"naval",
+"nears",
+"neigh",
+"newer",
+"nexus",
+"noise",
+"nooks",
+"north",
+"nutty",
+"ogres",
+"olive",
+"olive",
+"opens",
+"oxide",
+"owner",
+"paced",
+"palms",
+"pends",
+"pesky",
+"peppy",
+"petty",
+"phone",
+"phase",
+"porky",
+"pound",
+"pride",
+"print",
+"purse",
+"quack",
+"queen",
+"quart",
+"query",
+"quiet",
+"rafts",
+"rated",
+"react",
+"ready",
+"realm",
+"riced",
+"rides",
+"rigid",
+"rumor",
+"sadly",
+"safes",
+"saggy",
+"sails",
+"saint",
+"salsa",
+"sauce",
+"scone",
+"seeds",
+"scums",
+"sense",
+"shark",
+"sheds",
+"shout",
+"shove",
+"sides",
+"sixth",
+"skeet",
+"skill",
+"snots",
+"solid",
+"sound",
+"south",
+"spoil",
+"stall",
+"stole",
+"store",
+"sulks",
+"swamp",
+"sword",
+"syncs",
+"tempt",
+"texts",
+"texas",
+"today",
+"tonic",
+"topaz",
+"tried",
+"truth",
+"twigs",
+"typos",
+"udder",
+"unify",
+"using",
+"usual",
+"valid",
+"vapor",
+"venue",
+"vowel",
+"waked",
+"waist",
+"waxed",
+"whips",
+"whole",
+"wordy",
+"wreck",
+"yager",
+"yacht",
+"xenon",
+"yield",
+"yikes",
+"zincs",
+"zesty",
+"zones",
+"zincs",
+"zooms",
+"zeros",
+"yummy",
+"youth",
+"yogas",
+"yodle"];
+
+
+const lvlFourWords = [
+"aboard",
+"abduct",
+"active",
+"acutes",
+"adored",
+"aglets",
+"alaska",
+"alibis",
+"anonym",
+"arches",
+"awhile",
+"awoken",
+"babble",
+"badges",
+"bagels",
+"badman",
+"barbie",
+"bedbug",
+"before",
+"bigots",
+"boiler",
+"bomber",
+"brooms",
+"bureau",
+"burrow",
+"bylaws",
+"cabins",
+"cactus",
+"caddie",
+"caesar",
+"carpet",
+"carved",
+"center",
+"chasms",
+"chewed",
+"chorus",
+"circus",
+"clanky",
+"cocked",
+"condom",
+"corpse",
+"cosmic",
+"credit",
+"crimes",
+"cuffed",
+"cussed",
+"dammit",
+"darker",
+"debits",
+"decent",
+"debris",
+"defuze",
+"detest",
+"dimmer",
+"dissed",
+"donate",
+"dramas",
+"drifts",
+"earths",
+"echoes",
+"elicit",
+"eleven",
+"envoys",
+"enzyms",
+"estate",
+"faceup",
+"fables",
+"failed",
+"factor",
+"falcon",
+"famine",
+"fandom",
+"fecial",
+"feline",
+"fences",
+"fester",
+"finger",
+"fishes",
+"floppy",
+"frauds",
+"frosty",
+"gallon",
+"gambit",
+"garden",
+"gawker",
+"genres",
+"ghostly",
+"gifted",
+"glossy",
+"goodie",
+"grayed",
+"guilts",
+"hacker",
+"halves",
+"handle",
+"harems",
+"harden",
+"helmet",
+"homely",
+"humour",
+"hunted",
+"iconic",
+"iguana",
+"images",
+"impact",
+"invade",
+"ironic",
+"issued",
+"italic",
+"jacked",
+"jester",
+"jigsaw",
+"jiggly",
+"jockey",
+"juices",
+"jungle",
+"kayaks",
+"keypad",
+"kibble",
+"knifer",
+"kosher",
+"labour",
+"ladder",
+"ladies",
+"laired",
+"lamped",
+"leachy",
+"licker",
+"liquid",
+"lurker",
+"magics",
+"magots",
+"mallet",
+"mantis",
+"member",
+"mickey",
+"mildly",
+"moolah",
+"mullet",
+"myself",
+"nachos",
+"nerved",
+"nibble",
+"nickle",
+"nimble",
+"nitros",
+"nozzle",
+"nymphs",
+"nylons",
+"oblige",
+"offkey",
+"oddity",
+"online",
+"onside",
+"oodles",
+"orbits",
+"others",
+"owlish",
+"oyster",
+"paints",
+"pantry",
+"parish",
+"pastor",
+"pencil",
+"pepper",
+"phones",
+"picked",
+"plague",
+"prefer",
+"prompt",
+"python",
+"quacks",
+"quaint",
+"quoted",
+"rabbit",
+"racoon",
+"radish",
+"rarely",
+"ravish",
+"record",
+"refuel",
+"reflex",
+"resent",
+"richly",
+"rotate",
+"ruined",
+"sacked",
+"saliva",
+"salted",
+"sample",
+"sauced",
+"savage",
+"scheme",
+"scopes",
+"scruff",
+"search",
+"sensor",
+"shield",
+"shrimp",
+"slaved",
+"sludge",
+"somber",
+"splosh",
+"stench",
+"stocks",
+"stumps",
+"syrups",
+"tablet",
+"tangle",
+"tattoo",
+"tenses",
+"thwart",
+"toasts",
+"tomboy",
+"traced",
+"troves",
+"turban",
+"uglier",
+"unclog",
+"unpack",
+"upkeep",
+"upsets",
+"urchin",
+"utmost",
+"utopia",
+"vacant",
+"vacuum",
+"valued",
+"vector",
+"versal",
+"vexing",
+"virtue",
+"vogued",
+"vowels",
+"vortex",
+"waffle",
+"walrus",
+"weapon",
+"weirdo",
+"wicket",
+"worthy",
+"yanked",
+"yawned",
+"yellow",
+"youths",
+"zapped",
+"zeroes",
+"zested",
+"zoomed",
+"zygote"];
+
+
+const lvlFiveWords = [
+"abducts",
+"abolish",
+"account",
+"acronym",
+"adjures",
+"adopted",
+"agitate",
+"aidless",
+"alarmed",
+"alchohol",
+"alfredo",
+"alleged",
+"allergy",
+"allures",
+"amiable",
+"aminity",
+"analyst",
+"another",
+"anxious",
+"apricot",
+"arrived",
+"attacks",
+"autopsy",
+"awkward",
+"babbles",
+"backset",
+"banjoes",
+"bandits",
+"batched",
+"beacons",
+"bedpost",
+"bedsore",
+"belongs",
+"benches",
+"berserk",
+"bicolor",
+"bizarre",
+"blubbed",
+"bombers",
+"borrows",
+"bracers",
+"bricked",
+"brutish",
+"bulgers",
+"burrito",
+"bygones",
+"cabinet",
+"cahoots",
+"cameras",
+"canteen",
+"captive",
+"cartels",
+"cashbox",
+"cattish",
+"censors",
+"chaffer",
+"charter",
+"cheeses",
+"chromic",
+"clamped",
+"clunker",
+"collars",
+"compute",
+"consult",
+"corrupt",
+"creamed",
+"crystal",
+"cyclone",
+"daggers",
+"dangled",
+"daycare",
+"decoyed",
+"deduced",
+"dentist",
+"dilator",
+"discard",
+"dollars",
+"doweled",
+"drudged",
+"dwarves",
+"egoless",
+"elastic",
+"endurer",
+"enforce",
+"epilogs",
+"erupted",
+"evoking",
+"extinct",
+"fanatic",
+"ferrets",
+"fifteen",
+"flashes",
+"flushes",
+"footman",
+"fossils",
+"freedom",
+"frowned",
+"furrows",
+"gassers",
+"genders",
+"glimpse",
+"googled",
+"grayest",
+"grudged",
+"gymnast",
+"hagfish",
+"hammock",
+"hardily",
+"healthy",
+"herself",
+"hoarser",
+"hoisted",
+"horsing",
+"hunches",
+"icefall",
+"idolism",
+"illegal",
+"impeach",
+"implode",
+"indoors",
+"inkpots",
+"invades",
+"issuers",
+"jackets",
+"jaywalk",
+"kettles",
+"labeled",
+"mangled",
+"maximum",
+"nibbled"];
+
+
+const lvlSixWords = [
+"absolute",
+"adducted",
+"adhering",
+"analyzer",
+"antihero",
+"approved",
+"atonable",
+"babbling",
+"backpack",
+"balloons",
+"baptised",
+"barstool",
+"battiest",
+"bearskin",
+"beefcake",
+"beholder",
+"benefits",
+"bigfoots",
+"birdcage",
+"blasters",
+"bondsman",
+"breeched",
+"budworms",
+"buzzword",
+"cackling",
+"calciums",
+"callback",
+"capacity",
+"carjacks",
+"cartoons",
+"cementery",
+"censuses",
+"cerebal",
+"checkoff",
+"chewable",
+"chubbier",
+"churning",
+"cinnamon",
+"cloggers",
+"cocktail",
+"cogwheel",
+"collapse",
+"concaved",
+"corniest",
+"cowardly",
+"cropland",
+"cynicism",
+"darkness",
+"deadlift",
+"decorate",
+"defusing",
+"deposits",
+"detecter",
+"diasters",
+"dingdong",
+"discrete",
+"doorknob",
+"dreaming",
+"dyslexia",
+"eclipses",
+"employee",
+"enjoyers",
+"enthrall",
+"epilogue",
+"euphoria",
+"expected",
+"facility",
+"fantasia",
+"fawnlike",
+"feminist",
+"flamingo",
+"flowered",
+"fluorite",
+"folklore",
+"forested",
+"friendly",
+"funerals",
+"fuzziest",
+"galivant",
+"germiest",
+"gryphons",
+"haircuts",
+"hammocks",
+"haunting",
+"helmless",
+"hippiest",
+"hotlinks",
+"hysteric",
+"igniters",
+"implored",
+"insanity",
+"isolated",
+"jackpots",
+"journals",
+"kamikaze",
+"kinglike",
+"laborers",
+"landline",
+"laughter",
+"liftoffs",
+"locknuts",
+"luggages",
+"lynchers",
+"machetes",
+"mafiosos",
+"makeover",
+"markdown",
+"material",
+"mermaids",
+"midwifes",
+"ministers",
+"mislodge",
+"modifies",
+"moreover",
+"mulligan",
+"narrowed",
+"neatness",
+"nitrogen",
+"nuthouse",
+"offtrack",
+"ornament",
+"outcasts",
+"outranks",
+"owlishly",
+"pageboys",
+"pardoned",
+"pensions",
+"physical",
+"poaching",
+"promised",
+"quackier",
+"quibbler",
+"quotable",
+"rebounds",
+"refunded",
+"rustable",
+"sailorly",
+"sanitize",
+"scissors",
+"seagulls",
+"selloffs",
+"shavings",
+"shrimper",
+"slowdown",
+"soaplike",
+"syndrome",
+"tailwind",
+"tamponed",
+"thickish",
+"timeouts",
+"township",
+"triplets",
+"uglifier",
+"unbathed",
+"unearths",
+"unkingly",
+"upstarts",
+"vamooses",
+"vehicles",
+"vestless",
+"vomiting",
+"vouchers",
+"warnings",
+"washbowl",
+"welcomer",
+"woefully",
+"xeroxing",
+"yardwork",
+"yearbook",
+"yummiest",
+"zizzling",
+"zoologic",
+"zucchini",
+"zoneless",
+"zonetime",
+"zigzaggy",
+"zillions",
+"zippiest",
+"zappiest",
+"zippered"];
+
+
+const lvlSevenWords = [
+"aardvarks",
+"abridging",
+"aftermath",
+"allowance",
+"animalize",
+"apostates",
+"armorless",
+"autograph",
+"babyproof",
+"bagginess",
+"ballerina",
+"banishing",
+"barbecues",
+"beastings",
+"beefcakes",
+"beworried",
+"blackbird",
+"blueberry",
+"bracketed",
+"bullweeds",
+"cancelers",
+"carbuncle",
+"carousels",
+"charmless",
+"collision",
+"communion",
+"corruptor",
+"currently",
+"deafening",
+"declassed",
+"defuelled",
+"descended",
+"dialoging",
+"dimension",
+"distorter",
+"driveways",
+"dyslexias",
+"embezzled",
+"endpoints",
+"equaliser",
+"eventless",
+"explicits",
+"faintness",
+"fiberless",
+"flounders",
+"foreheads",
+"furiously",
+"gemstones",
+"glowingly",
+"grumbling",
+"handbells",
+"heelpiece",
+"hipiness",
+"hookworms",
+"icemakers",
+"impassion",
+"injectors",
+"invasions",
+"jellifies",
+"junctions",
+"kamikazes",
+"kidnapper",
+"kowtowing",
+"labourers",
+"labyrnith",
+"lathering",
+"leveraged",
+"localized",
+"mailrooms",
+"masterful",
+"mentalist",
+"miniskirt",
+"nailbrush",
+"narcistic",
+"nevermore",
+"noncareer",
+"noxiously",
+"obviously",
+"oppressor",
+"outgazing",
+"outwished",
+"overweigh",
+"paintwork",
+"parallels",
+"pedophile",
+"picketers",
+"playbacks",
+"positives",
+"psychotic",
+"qualified",
+"quotation",
+"radiators",
+"ravishing",
+"recognize",
+"remodeler",
+"sasquatch",
+"scavenger",
+"semifinal",
+"shackling",
+"showiness",
+"skullcaps",
+"stampeded",
+"stomached",
+"suiciding",
+"tantalise",
+"technical",
+"testicles",
+"timesaver",
+"usability",
+"viewpoint"];
+
+
+const lvlEightWords = [
+"acetylates",
+"bamboozles",
+"beekeepers",
+"calendared",
+"centipedes",
+"chimpanzee",
+"debilitate",
+"deportment",
+"devolution",
+"eccentrics",
+"encapsules",
+"exaggerate",
+"federalize",
+"flabbiness",
+"frequently",
+"ghoulishly",
+"graciously",
+"handmaiden",
+"hauntingly",
+"hypnotized",
+"immobilize",
+"imperfects",
+"intoxicate",
+"jackknifes",
+"kidnapping",
+"laundering",
+"liquidated",
+"manslayers",
+"meanderers",
+"misbehaves",
+"necromancy",
+"obediences",
+"palindrome",
+"perfecters",
+"puzzlingly",
+"quantities",
+"rearousing",
+"redevelops",
+"reputation",
+"scandalize",
+"seductions",
+"slumberers",
+"temporally",
+"ultraclean",
+"undefeated",
+"vigorously",
+"watermarks",
+"wristbands",
+"yellowtail",
+"zoologists"];
+
+
+function reset() {
+  level = 1;
+  score = 0;
+  correct = 0;
+  attempts = 0;
+  word = "";
+  updateBoard();
+  info.innerHTML = "";
+  userGuess.value = "";
+}
+
+function randomWord(lvl) {
+  word = lvl[Math.floor(Math.random() * lvl.length + 1) - 1];
+  return word;
+}
+
+function scrambleWord(word) {
+  let letters = word.split("");
+  let currentIndex = letters.length,
+  temporaryValue,
+  randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {if (window.CP.shouldStopExecution(0)) break;
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = letters[currentIndex];
+    letters[currentIndex] = letters[randomIndex];
+    letters[randomIndex] = temporaryValue;
+  }window.CP.exitedLoop(0);
+
+  return letters.join(" ");
+}
+function updateBoard() {
+  scoreOutput.innerHTML = score;
+  levelOutput.innerHTML = level;
+  attemptsOutput.innerHTML = attempts;
+}
+
+function checkAnswer(guess) {
+  console.log(`Correct: ${correct}`);
+  if (correct == 3) {
+    level += 1;
+    correct = 0;
+  }
+
+  if (attempts == 3) {
+    guessContainer.classList.toggle("hidden");
+    info.innerHTML =
+    "<p class='retry'>Sorry. You are out of chances. <button id='retry-button'>Retry</button> </p>";
+    reset();
+  }
+
+  if (guess === word) {
+    info.innerHTML = "<span class='correct'>CORRECT</span>";
+    score += 1;
+    correct += 1;
+    attempts = 0;
+    setLevel();
+  } else {
+    info.innerHTML = "<span class='incorrect'>Bzzzt! That's not right!</span>";
+    score -= 1;
+    attempts += 1;
+  }
+
+  updateBoard();
+}
+
+function setLevel() {
+  if (level == 1) {
+    randomWord(lvlOneWords);
+  } else if (level == 2) {
+    randomWord(lvlTwoWords);
+  } else if (level == 3) {
+    randomWord(lvlThreeWords);
+  } else if (level == 4) {
+    randomWord(lvlFourWords);
+  } else if (level == 5) {
+    randomWord(lvlFiveWords);
+  } else if (level == 6) {
+    randomWord(lvlSixWords);
+  } else if (level == 7) {
+    randomWord(lvlSevenWords);
+  } else if (level == 8) {
+    randomWord(lvlEightWords);
+  } else if (level == 9) {
+    info.innerHTML =
+    "<span class='win'>You Win! Great job! </br> You can reset or keep playing.</span>";
+  }
+
+  console.log(`Word: ${word}`);
+  usersWord.innerHTML = scrambleWord(word);
+}
+
+playBtn.addEventListener("click", function (e) {
+  rules.classList.toggle("hidden");
+  gameContainer.classList.remove("hidden");
+});
+
+submitBtn.addEventListener("click", function (e) {
+  checkAnswer(userGuess.value.toLowerCase());
+  userGuess.value = "";
+});
+
+window.addEventListener(
+"keypress",
+function (e) {
+  if (e.keyCode == 13) {
+    checkAnswer(userGuess.value.toLowerCase());
+    userGuess.value = "";
+  }
+},
+false);
+
+
+resetBtn.addEventListener("click", function (e) {
+  reset();
+  setLevel();
+  guessContainer.classList.remove("hidden");
+  userGuess.value = "";
+});
+
+setLevel();
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
